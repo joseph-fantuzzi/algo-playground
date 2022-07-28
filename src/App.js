@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Graph from "./components/Graph";
+import "./App.css";
+
+const matrix = new Array(50);
+for (let i = 0; i < matrix.length; i++) {
+  matrix[i] = new Array(50).fill(0);
+}
 
 function App() {
+  const [graph, setGraph] = useState(matrix);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Graph graph={graph} setGraph={setGraph} />
     </div>
   );
 }
