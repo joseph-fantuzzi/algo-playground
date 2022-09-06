@@ -1,5 +1,5 @@
 .container {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .node-container {
@@ -12,11 +12,12 @@
 .node {
   width: 20px;
   height: 20px;
+  border-radius: 5px;
   border: 1px solid rgb(118, 118, 118);
 }
 
 .start-node {
-  background-color: #fd2bc2;
+  background-color: #8437e9;
 }
 
 .end-node {
@@ -24,7 +25,7 @@
 }
 
 .visited-node {
-  background-color: #fba4e2;
+  background-color: #8437e981;
 }
 
 .grid-container {
@@ -35,5 +36,141 @@
   align-items: center;
 }
 
+.nav {
+  width: 600px;
+  margin: 0 auto;
+  min-height: 8vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .title {
+  font-weight: 700;
+  font-size: 2em;
+  margin-bottom: 0.3em;
+}
+
+.info {
+  font-weight: 200;
+}
+
+.dfs-btn,
+.bfs-btn {
+  margin-right: 1.5em;
+}
+
+.dfs-btn,
+.bfs-btn,
+.reset-btn {
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #e2e8ec;
+  box-shadow: 4px 4px 8px #cbcbcb, -4px -4px 8px #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  transition: all 0.3s ease;
+}
+
+.reset-btn {
+  background-color: #e66262;
+  color: white;
+}
+
+.reset-btn:hover {
+  background-color: #e662628c;
+  color: black;
+  box-shadow: none;
+}
+
+.dfs-btn:hover,
+.bfs-btn:hover {
+  background-color: #8437e981;
+  box-shadow: none;
+}
+
+.btn-container {
+  margin-bottom: 2em;
+}
+
+.main {
+  min-height: 87vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em 0;
+}
+
+.footer {
+  font-weight: 200;
+  font-size: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 5vh;
+}
+
+.coordinates {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.location-container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.change-btn {
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  border: 2px solid #8437e9;
+  height: 55%;
+  cursor: pointer;
+  background-color: #8437e9;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  transition: all 0.3s ease;
+}
+
+.change-btn:hover {
+  background-color: #8437e944;
+  color: black;
+}
+
+.inputs {
+  display: flex;
+  gap: 1em;
+}
+
+.input {
+  border: none;
+  border-radius: 8px;
+  padding: 0.3em 1em;
+  padding-right: 0;
+  width: 60px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: 0.9em;
+}
+
+.input:focus {
+  outline: 2px solid #8437e9;
+}
+
+.node-title {
+  font-size: 0.9em;
+  margin-bottom: 0.5em;
+}
+
+.label {
+  font-weight: 300;
+  font-size: 0.9em;
+  margin-right: 0.2em;
 }

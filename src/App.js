@@ -15,8 +15,9 @@ for (let i = 0; i < visited.length; i++) {
 function App() {
   const [graph, setGraph] = useState(matrix);
   const [visitedGraph, setVisitedGraph] = useState(visited);
-  const [start, setStart] = useState([7, 5]);
-  const [end, setEnd] = useState([10, 10]);
+  const [start, setStart] = useState([12, 6]);
+  const [end, setEnd] = useState([12, 23]);
+  const [values, setValues] = useState({ startX: 12, startY: 6, endX: 12, endY: 23 });
 
   graph[start[0]][start[1]] = 1;
   graph[end[0]][end[1]] = 2;
@@ -94,18 +95,124 @@ function App() {
     }
   };
 
+  const handleReset = () => {
+    visited = new Array(30);
+    for (let i = 0; i < visited.length; i++) {
+      visited[i] = new Array(30).fill(false);
+    }
+    setVisitedGraph(visited);
+    const nodes = document.querySelectorAll(".visited-node");
+    nodes.forEach((node) => node.classList.remove("visited-node"));
+  };
+
+  const handleChange = () => {
+    graph[start[0]][start[1]] = 0;
+    graph[end[0]][end[1]] = 0;
+    visitedGraph[start[0]][start[1]] = false;
+    const { startX, startY, endX, endY } = values;
+    setStart([Number(startX), Number(startY)]);
+    setEnd([Number(endX), Number(endY)]);
+    visitedGraph[startX][startY] = true;
+  };
+
   return (
     <div className="container">
       <nav className="nav">
         <h1 className="title">Algo Playground</h1>
+        <p className="info">A place to visualize different data structures and algorithms.</p>
       </nav>
-      <button className="dfs-btn" onClick={startDFS}>
-        Perform DFS
-      </button>
-      <button className="dfs-btn" onClick={startBFS}>
-        Perform BFS
-      </button>
-      <Graph graph={graph} />
+      <div className="main">
+        <div className="location-container">
+          <div className="coordinates">
+            <p className="node-title">Starting Node</p>
+            <div className="inputs">
+              <div>
+                <label className="label" htmlFor="start-x">
+                  X:
+                </label>
+                <input
+                  className="input"
+                  min="0"
+                  max="29"
+                  id="start-x"
+                  name="startX"
+                  type="number"
+                  value={values.startX}
+                  onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="label" htmlFor="start-y">
+                  Y:
+                </label>
+                <input
+                  className="input"
+                  min="0"
+                  max="29"
+                  id="start-y"
+                  type="number"
+                  value={values.startY}
+                  name="startY"
+                  onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
+                />
+              </div>
+            </div>
+          </div>
+          <div className="coordinates">
+            <p className="node-title">Ending Node</p>
+            <div className="inputs">
+              <div>
+                <label className="label" htmlFor="end-x">
+                  X:
+                </label>
+                <input
+                  className="input"
+                  min="0"
+                  max="29"
+                  id="end-x"
+                  type="number"
+                  value={values.endX}
+                  name="endX"
+                  onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
+                />
+              </div>
+              <div>
+                <label className="label" htmlFor="end-y">
+                  Y:
+                </label>
+                <input
+                  className="input"
+                  min="0"
+                  max="29"
+                  id="end-y"
+                  type="number"
+                  value={values.endY}
+                  name="endY"
+                  onChange={(e) => setValues({ ...values, [e.target.name]: e.target.value })}
+                />
+              </div>
+            </div>
+          </div>
+          <button className="change-btn" onClick={handleChange}>
+            Change
+          </button>
+        </div>
+        <div className="btn-container">
+          <button className="dfs-btn" onClick={startDFS}>
+            Depth First Search
+          </button>
+          <button className="bfs-btn" onClick={startBFS}>
+            Breadth First Search
+          </button>
+          <button className="reset-btn" onClick={handleReset}>
+            Reset
+          </button>
+        </div>
+        <Graph graph={graph} />
+      </div>
+      <div className="footer">
+        <p>Designed and Created By Joseph Fantuzzi 2022</p>
+      </div>
     </div>
   );
 }

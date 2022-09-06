@@ -131,5 +131,6 @@ table {
 
 body {
   min-height: 100vh;
-  background-color: #ebebeb;
+  background-color: #e2e8ec;
+  font-family: "Poppins", sans-serif;
 }
